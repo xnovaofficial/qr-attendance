@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import jsQR from 'jsqr';
+import "../../App.css"
+import { BiScan } from "react-icons/bi";
+
+
+
 
 const Scan = () => {
   const [data, setData] = useState('No result');
@@ -54,11 +59,18 @@ const Scan = () => {
 
   return (
     <>
-      <video ref={videoRef} style={{ width: '100%', height: 'auto' }}></video>
+      <video ref={videoRef} style={{ width: '100%', height: 'auto', borderRadius:20 }}></video>
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
-      <button onClick={scanQRCode}>Scan QR Code</button>
-      <button onClick={toggleFacingMode}>Toggle Camera</button>
+      
+      <div className='scanqrcon'>  <button className='button' onClick={scanQRCode}>
+        <BiScan size={20} style={{marginRight:10}} />
+          Scan QR Code</button>
+        </div>
+      
+        
+      
+      {/* <button className='button' onClick={toggleFacingMode}>Toggle Camera</button> */}
       <p>{data}</p>
     </>
   );
