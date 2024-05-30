@@ -4,11 +4,10 @@ import QrPage from './components/qr/QrPage';
 import Scan from './components/scan/Scan';
 import { BsQrCodeScan } from "react-icons/bs";
 import Togglebar from './components/togglebar/togglebar';
-import RegisterhtmlForm from './components/registrationform/registerForm';
 
 function App() {
   const [, setShowQR] = useState(false);
-  const [showScan, setShowScan] = useState(false);
+  const [, setShowScan] = useState(false);
   const[ShowScanContent,setShowScanContent]=useState(false);
 
   const handleScanButtonClick = () => {
@@ -19,9 +18,9 @@ function App() {
 
   return (
     <div className="App">
+        <Togglebar/>
       <div className="container">
         {/* <button  onClick={handleQRButtonClick}>Show QR</button> */}
-        <Togglebar/>
 
         {/* <RegisterhtmlForm/> */}
 
@@ -33,7 +32,7 @@ function App() {
 }
         
       </div>
-     <QrPage />
+     {/* <QrPage /> */}
        <Scan />
     </div>
   );

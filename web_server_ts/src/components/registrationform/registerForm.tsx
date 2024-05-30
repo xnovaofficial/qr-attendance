@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import "./form.css"
-import { api } from '../../utils/api';
 import axios from 'axios';
 
 
@@ -25,26 +24,12 @@ const RegisterhtmlForm = () => {
       const handleSubmit=async (e:any)=>{
         try {
           e.preventDefault();
-  
-          // const apiData = {
-          //     Username: formValues.username,
-          //     email: formValues.email,
-          //     phone_no: formValues.phone,
-          //     UserId:formValues.userid
-          //   };
             console.log(formValues);
-            
-  
-            // const response= await api.auth.signup(formValues)
-          
             const response=axios.post("http://localhost:8989/api/v1/auth/register",formValues)
             console.log(response)
         } catch (error) {
           console.error(error)
         }
-
-
-          
       }
   return (
 
