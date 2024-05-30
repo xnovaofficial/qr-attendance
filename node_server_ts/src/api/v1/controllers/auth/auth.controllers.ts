@@ -21,7 +21,7 @@ export const RegisterUser = async(req: Request, res: Response) => {
         })
     
         const user = await NewUser.save();
-        res.status(200).json({ message: MESSAGE.post.succ,result:user });
+       return res.status(200).json({ message: MESSAGE.post.succ,result:user });
     } 
     catch (error) {
         console.error("Error registering user:", error);

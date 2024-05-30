@@ -79,10 +79,9 @@ const Scan = () => {
 
   return (
     <div className='pb-5' style={{marginTop:"55px"}}>
-      <video ref={videoRef} style={{ width: '100%', height: 'auto' }}></video>
+      <video ref={videoRef} style={{ width: '100%', height: '70vh' }}></video>
 
-      <canvas ref={canvasRef} style={{ display: 'none',height:"100vh" }}></canvas>
-      
+<canvas ref={canvasRef} style={{ display: 'none', height: "100vh" }}></canvas>
       <div className='scanqrcon'>  
         {/* <button className='button' onClick={scanQRCode}>
       
@@ -94,18 +93,19 @@ const Scan = () => {
     <span className="btn-text-one">
     <BiScan size={20} style={{ marginRight: 10 }}/>
       SCAN</span>
-    <span className="btn-text-two">Loading...</span>
+    {/* <span className="btn-text-two"><BiScan size={20} style={{ marginRight: 10 }}/>
+      SCAN</span> */}
 </button>
 </div>
       </div>
-      <div className="" style={{marginLeft:"auto",marginRight:"auto",flexDirection:"row",display:"flex",alignItems:"baseline",justifyContent:"center",marginTop:30}}>
+      {/* <div className="" style={{marginLeft:"auto",marginRight:"auto",flexDirection:"row",display:"flex",alignItems:"baseline",justifyContent:"center",marginTop:30}}>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-clipboard2-data" viewBox="0 0 16 16">
   <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
   <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
   <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
 </svg>
       <p>{data}</p>
-      </div>
+      </div> */}
     </div>
   );
 };
