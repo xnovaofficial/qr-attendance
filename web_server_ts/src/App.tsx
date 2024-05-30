@@ -23,7 +23,7 @@ function App() {
         {/* <button  onClick={handleQRButtonClick}>Show QR</button> */}
         <Togglebar/>
 
-        <RegisterhtmlForm/>
+        {/* <RegisterhtmlForm/> */}
 
         {ShowScanContent &&
         <div className='qrcontent'>
@@ -34,7 +34,7 @@ function App() {
         
       </div>
      <QrPage />
-      {showScan && <Scan />}
+       <Scan />
     </div>
   );
 }

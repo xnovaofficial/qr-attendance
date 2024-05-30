@@ -2,18 +2,28 @@ import { useState, useEffect, useRef } from 'react';
 import jsQR from 'jsqr';
 import "../../App.css"
 import { BiScan } from "react-icons/bi";
-
-
-
+import axios from 'axios';
 
 const Scan = () => {
   const [data, setData] = useState('No result');
-  const videoRef:any = useRef(null);
-  const canvasRef = useRef(null);
-
+  const videoRef = useRef<any>(null);
+  const canvasRef = useRef<any>(null);
+  const [lat,setLat]=useState<any>("")
+  const [long,setLong]=useState<any>("")
+  
+  const attendenceApi = async ()=>{
+    const result = axios.post("http://localhost:8989/api/v1/attendence/present",{
+      username:"tesst",
+      userId:"123s4",
+      lat:lat,
+      long:long
+    })
+    console.log("response====>",result)
+  }
+  
   useEffect(() => {
-    
     const constraints = { video: { facingMode: 'environment' } }; // Use rear camera initially
+
 
     navigator.mediaDevices.getUserMedia(constraints)
       .then((stream) => {
@@ -23,11 +33,27 @@ const Scan = () => {
       .catch((error) => {
         console.error('Error accessing camera:', error);
       });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log('Latitude:', position.coords.latitude);
+          setLat(position.coords.latitude)
+          console.log('Longitude:', position.coords.longitude);
+          setLong(position.coords.longitude)
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
   }, []);
 
   const scanQRCode = () => {
     const video = videoRef.current;
-    const canvas:any = canvasRef.current;
+    const canvas = canvasRef.current;
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -39,30 +65,30 @@ const Scan = () => {
 
     if (code) {
       setData(code.data);
+      console.log("QR Code Data:", code.data);
+      if(code.data==="atendence"){
+
+        attendenceApi()
+      }else{
+        alert("wrong qr")
+      }
     } else {
       setData('No QR code found');
     }
   };
 
-  
-useEffect(() => {
-  scanQRCode()
-}, [])
-
   return (
     <>
-      <video ref={videoRef} style={{ width: '100%', height: 'auto', borderRadius:20 }}></video>
+      <video ref={videoRef} style={{ width: '100%', height: 'auto', borderRadius: 20 }}></video>
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
       
-      {/* <div className='scanqrcon'>  <button className='button' onClick={scanQRCode}>
-        <BiScan size={20} style={{marginRight:10}} />
-          Scan QR Code</button>
-        </div>
-       */}
-        
-      
-      {/* <button className='button' onClick={toggleFacingMode}>Toggle Camera</button> */}
+      <div className='scanqrcon'>  
+        <button className='button' onClick={scanQRCode}>
+          <BiScan size={20} style={{ marginRight: 10 }} />
+          Scan QR Code
+        </button>
+      </div>
       <p>{data}</p>
     </>
   );

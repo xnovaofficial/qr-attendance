@@ -1,7 +1,7 @@
 import QRCode from 'qrcode.react';
 
 const QrPage = () => {
-  const url = 'https://mail.google.com/mail/u/0/#inbox';
+  const url = 'atendence';
 
   return (
     <div>

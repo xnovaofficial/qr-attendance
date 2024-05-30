@@ -4,8 +4,8 @@ import { MESSAGE } from "../../../../constants/message";
 import AttendanceModel from "../../../../models/atendence.model";
 
 // Target location coordinates
-const TARGET_LAT = 22.5754;
-const TARGET_LONG = 88.4798;
+const TARGET_LAT = 22.5828;
+const TARGET_LONG = 88.4539;
 
 export const createAttendance = async (req: Request, res: Response) => {
     try {
