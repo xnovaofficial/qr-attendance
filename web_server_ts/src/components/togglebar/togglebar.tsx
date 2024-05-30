@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../App.css';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Avatar from './avatar/avatar';

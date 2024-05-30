@@ -6,14 +6,9 @@ import { BsQrCodeScan } from "react-icons/bs";
 import Togglebar from './components/togglebar/togglebar';
 
 function App() {
-  const [showQR, setShowQR] = useState(false);
+  const [, setShowQR] = useState(false);
   const [showScan, setShowScan] = useState(false);
   const[ShowScanContent,setShowScanContent]=useState(true);
-
-  const handleQRButtonClick = () => {
-    setShowQR(true);
-    setShowScan(false);
-  };
 
   const handleScanButtonClick = () => {
     setShowQR(false);
@@ -35,7 +30,7 @@ function App() {
 }
         
       </div>
-      {showQR && <QrPage />}
+     <QrPage />
       {showScan && <Scan />}
     </div>
   );

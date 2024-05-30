@@ -12,6 +12,7 @@ const Scan = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    
     const constraints = { video: { facingMode: 'environment' } }; // Use rear camera initially
 
     navigator.mediaDevices.getUserMedia(constraints)
@@ -43,19 +44,10 @@ const Scan = () => {
     }
   };
 
-  const toggleFacingMode = () => {
-    const video = videoRef.current;
-    const constraints = { video: { facingMode: video.facingMode === 'user' ? 'environment' : 'user' } };
-
-    navigator.mediaDevices.getUserMedia(constraints)
-      .then((stream) => {
-        video.srcObject = stream;
-        video.play();
-      })
-      .catch((error) => {
-        console.error('Error accessing camera:', error);
-      });
-  };
+  
+useEffect(() => {
+  scanQRCode()
+}, [])
 
   return (
     <>
@@ -63,11 +55,11 @@ const Scan = () => {
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
       
-      <div className='scanqrcon'>  <button className='button' onClick={scanQRCode}>
+      {/* <div className='scanqrcon'>  <button className='button' onClick={scanQRCode}>
         <BiScan size={20} style={{marginRight:10}} />
           Scan QR Code</button>
         </div>
-      
+       */}
         
       
       {/* <button className='button' onClick={toggleFacingMode}>Toggle Camera</button> */}
