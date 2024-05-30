@@ -5,7 +5,7 @@ import { useNavigation } from 'react-router-dom';
 
 
 const RegisterhtmlForm = () => {
-  const navigation:any = useNavigation();
+  // const navigation:any = useNavigation();
     const [formValues, setFormValues] = useState({
       Username: '',
         email: '',
@@ -35,7 +35,7 @@ const RegisterhtmlForm = () => {
          localStorage.setItem("@userName",response!.data!.result.Username)
          localStorage.setItem("@userEmail",response!.data!.result.email)
          localStorage.setItem("@userPhone",response!.data!.result.phone_no)
-         navigation.navigate('/scan')
+        //  navigation.navigate('/scan')
         } catch (error) {
           console.error(error);
         }
