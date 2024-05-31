@@ -2,15 +2,18 @@
 import { useState } from "react";
 import "../registrationform/form.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
  const Signform = () => {
 
     const [formValues, setFormValues] = useState({
       
-          email: '',
+          UserId: '',
           phone_no: ''
          
         });
+        const navigate = useNavigate();
 
     const handleSubmit=async(e:any)=>{
         try{
@@ -22,9 +25,12 @@ import axios from "axios";
         console.log("response", response.data);
        
 
-       localStorage.setItem("@userEmail",response!.data!.result.email)
-       localStorage.setItem("@userPhone",response!.data!.result.phone_no)
-    //    navigation.navigate('/scan')
+        localStorage.setItem("@userId",response!.data!.result.UserId)
+        localStorage.setItem("@userName",response!.data!.result.Username)
+        localStorage.setItem("@userEmail",response!.data!.result.email)
+        localStorage.setItem("@userPhone",response!.data!.result.phone_no)
+        navigate("/scan");
+   
       } catch (error) {
         console.error(error);
       }
@@ -47,17 +53,15 @@ import axios from "axios";
 
         <form action="#" style={{height:"100%"}} onSubmit={handleSubmit}>
   <div className="user_details">
+    
     <div className="input_box">
-      
-    </div>
-    <div className="input_box">
-      <label htmlFor="email">Email</label>
+      <label htmlFor="UserId">UserId</label>
       <input  
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter your email"
-        value={formValues.email}
+        type="string"
+        id="UserId"
+        name="UserId"
+        placeholder="Enter your UserId"
+        value={formValues.UserId}
         onChange={handleInputChange}
         required
       />
@@ -77,7 +81,7 @@ import axios from "axios";
     
   </div>
   <div className="reg_btn">
-    <input type="submit" value="Register"/>
+    <input type="submit" value="Signin"/>
   </div>
 </form>
 

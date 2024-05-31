@@ -142,6 +142,12 @@ form .gender{
     background: linear-gradient(to right, #D64141, #F37A65);
 }
 
+.login_link {
+    font-weight: 500;
+    color:blue; /* Define --primary-color in your CSS or replace it with the actual color code */
+    transition: all 0.2s;
+  }
+
 @media screen and (max-width: 584px){
 
     .user_details{

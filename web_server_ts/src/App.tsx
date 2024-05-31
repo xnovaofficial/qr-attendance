@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Viewtable from './components/ViewTable/viewtable';
 import Protected from './components/protected/Protected';
 import  Signform  from './components/signinform/Signform';
+import QrPage from './components/qr/QrPage';
 
 function App() {
 
@@ -30,8 +31,11 @@ function App() {
           <Route path="/table" element={<Viewtable />} />
         </Route>
 
-        <Route path="/signin" element={<Protected />}>
+        
           <Route path="/signin" element={<Signform/>} />
+        
+        <Route path="/qrpage" element={<Protected />}>
+          <Route path="/qrpage" element={<QrPage/>} />
         </Route>
 
         {/* <Route path="/scan" element={<Scan />} /> */}

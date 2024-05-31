@@ -4,8 +4,8 @@ const QrPage = () => {
   const url = 'atendence';
 
   return (
-    <div>
-      <h2>Scan the QR code:</h2>
+    <div style={{marginTop:"4rem",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+      <h2 style={{color:"whitesmoke",marginBottom:"2rem"}}>Scan the QR code:</h2>
       <QRCode value={url} />
     </div>
   );

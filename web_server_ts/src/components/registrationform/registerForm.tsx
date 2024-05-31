@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import "./form.css"
 import axios from 'axios';
+import { Link, useNavigate} from 'react-router-dom';
 
 
 
 const RegisterhtmlForm = () => {
-  // const navigation:any = useNavigation();
+  const navigate = useNavigate();
     const [formValues, setFormValues] = useState({
       Username: '',
         email: '',
@@ -35,7 +36,7 @@ const RegisterhtmlForm = () => {
          localStorage.setItem("@userName",response!.data!.result.Username)
          localStorage.setItem("@userEmail",response!.data!.result.email)
          localStorage.setItem("@userPhone",response!.data!.result.phone_no)
-        //  navigation.navigate('/scan')
+         navigate("/scan");
         } catch (error) {
           console.error(error);
         }
@@ -101,9 +102,18 @@ const RegisterhtmlForm = () => {
     </div>
   </div>
   <div className="reg_btn">
-    <input type="submit" value="Register"/>
+    <input type="submit" value="Signup"/>
   </div>
 </form>
+<p className="mt-2 text-center text-base text-black/60">
+                    Already have an account?&nbsp;
+                    <Link
+                        to="/signin"
+                        className='login_link'
+                    >
+                        Sign In
+                    </Link>
+                    </p>
 
     </div>
     
