@@ -8,6 +8,7 @@ import RegisterhtmlForm from './components/registrationform/registerForm';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Viewtable from './components/ViewTable/viewtable';
 import Protected from './components/protected/Protected';
+import  Signform  from './components/signinform/Signform';
 
 function App() {
 
@@ -27,6 +28,10 @@ function App() {
 
         <Route path="/table" element={<Protected />}>
           <Route path="/table" element={<Viewtable />} />
+        </Route>
+
+        <Route path="/signin" element={<Protected />}>
+          <Route path="/signin" element={<Signform/>} />
         </Route>
 
         {/* <Route path="/scan" element={<Scan />} /> */}
