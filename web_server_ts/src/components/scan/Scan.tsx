@@ -10,13 +10,19 @@ const Scan = () => {
   const canvasRef = useRef<any>(null);
   const [lat,setLat]=useState<any>("")
   const [long,setLong]=useState<any>("")
-  
+
+
+  const userId = localStorage.getItem("@userId")
+  const userName = localStorage.getItem("@userName")
+  const userRole = localStorage.getItem("@userrole")
+
   const attendenceApi = async ()=>{
     const result = axios.post("http://localhost:8989/api/v1/attendence/present",{
-      username:"tesst",
-      userId:"123s4",
+      username:userName,
+      userId:userId,
       lat:lat,
-      long:long
+      long:long,
+      role:userRole
     })
     console.log("response====>",result)
   }

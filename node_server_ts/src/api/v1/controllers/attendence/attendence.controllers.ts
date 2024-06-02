@@ -4,12 +4,12 @@ import { MESSAGE } from "../../../../constants/message";
 import AttendanceModel from "../../../../models/atendence.model";
 
 // Target location coordinates
-const TARGET_LAT = 22.5828;
-const TARGET_LONG = 88.4539;
+const TARGET_LAT = 22.5888511;
+const TARGET_LONG = 88.4733589;
 
 export const createAttendance = async (req: Request, res: Response) => {
     try {
-        const { username, userId, lat, long } = req.body;
+        const { username, userId, lat, long,role } = req.body;
 
         const distance = getDistance(
             { latitude: lat, longitude: long },
@@ -37,6 +37,7 @@ export const createAttendance = async (req: Request, res: Response) => {
                 username,
                 userId,
                 attendanceStatus: true,
+                role
             });
 
             const attendance = await newAttendance.save();

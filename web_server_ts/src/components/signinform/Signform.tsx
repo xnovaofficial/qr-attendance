@@ -29,6 +29,7 @@ import { useNavigate } from "react-router-dom";
         localStorage.setItem("@userName",response!.data!.result.Username)
         localStorage.setItem("@userEmail",response!.data!.result.email)
         localStorage.setItem("@userPhone",response!.data!.result.phone_no)
+        localStorage.setItem("@userrole",response!.data!.result.role)
         navigate("/scan");
    
       } catch (error) {

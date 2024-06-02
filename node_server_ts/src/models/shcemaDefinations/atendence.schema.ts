@@ -7,7 +7,8 @@ const AttendanceSchema: Schema<IAttendanceSchema> = new Schema<IAttendanceSchema
     {
         username: SCHEMA_DEFINITION_PROPERTY.requiredString,
         userId: SCHEMA_DEFINITION_PROPERTY.requiredString,
-        attendanceStatus: SCHEMA_DEFINITION_PROPERTY.requiredBoolean
+        attendanceStatus: SCHEMA_DEFINITION_PROPERTY.requiredBoolean,
+        role:SCHEMA_DEFINITION_PROPERTY.optionalNullNumber
     },
     GENERAL_SCHEMA_OPTIONS
 );

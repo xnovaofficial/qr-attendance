@@ -5,7 +5,7 @@ import UserModel from "../../../../models/user.model";
 //registeruser
 export const RegisterUser = async(req: Request, res: Response) => {
     try {
-        const {Username,phone_no,email,UserId}=req.body
+        const {Username,phone_no,email,UserId,role}=req.body
 
         const existingUser = await UserModel.findOne({ $or: [{ phone_no }, {UserId },{email}] });
         if (existingUser) {
@@ -18,6 +18,7 @@ export const RegisterUser = async(req: Request, res: Response) => {
             phone_no,
             email,
             UserId,
+            role
         })
     
         const user = await NewUser.save();

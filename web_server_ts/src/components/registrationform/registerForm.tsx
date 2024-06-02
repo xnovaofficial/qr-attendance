@@ -11,7 +11,8 @@ const RegisterhtmlForm = () => {
       Username: '',
         email: '',
         phone_no: '',
-        UserId:''
+        UserId:'',
+        role:1
       });
 
 
@@ -36,6 +37,7 @@ const RegisterhtmlForm = () => {
          localStorage.setItem("@userName",response!.data!.result.Username)
          localStorage.setItem("@userEmail",response!.data!.result.email)
          localStorage.setItem("@userPhone",response!.data!.result.phone_no)
+         localStorage.setItem("@userrole",response!.data!.result.role)
          navigate("/scan");
         } catch (error) {
           console.error(error);
@@ -114,7 +116,6 @@ const RegisterhtmlForm = () => {
                         Sign In
                     </Link>
                     </p>
-
     </div>
     
   )
