@@ -20,14 +20,14 @@ const RegisterhtmlForm = () => {
         const { name, value } = e.target;
         setFormValues({
           ...formValues,
-          [name]: value
+          [name]: name === 'role' ? parseInt(value) : value
         });
       };
 
       const handleSubmit = async (e:any) => {
         try {
           e.preventDefault();
-          console.log(formValues);
+          console.log("form",formValues);
       
           const response:any = await axios.post("http://localhost:8989/api/v1/auth/register", formValues);
       
@@ -102,6 +102,24 @@ const RegisterhtmlForm = () => {
         required
       />
     </div>
+    <div className="input_box">
+            <label htmlFor="role">Select Role</label>
+            <select
+              id="role"
+              name="role"
+              value={formValues.role}
+              onChange={handleInputChange}
+              required
+            >
+              <option value={7}>Manager</option>
+              <option value={6}>Department Manager</option>
+              <option value={5}>Lead</option>
+              <option value={4}>Senior Executive</option>
+              <option value={3}>Executive</option>
+              <option value={2}>Incharge</option>
+              <option value={1}>Others</option>
+            </select>
+          </div>
   </div>
   <div className="reg_btn">
     <input type="submit" value="Signup"/>

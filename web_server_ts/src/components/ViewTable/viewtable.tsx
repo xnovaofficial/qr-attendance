@@ -8,9 +8,19 @@ const ViewTable = () => {
     const [colDefs]:any = useState([
         { field: "username" },
         { field: "attendanceStatus" },
-        { field: "userId" }
+        { field: "userId" },
+        { field: "role" },
     ]);
     const [rowData, setRowData] = useState([]);
+    const roleMap:any = {
+        7: 'Manager',
+        6: 'Department Manager',
+        5: 'Lead',
+        4: 'Senior Executive',
+        3: 'Executive',
+        2: 'Incharge',
+        1: 'Others'
+    };
     // 
 
     useEffect(() => {
@@ -22,10 +32,11 @@ const ViewTable = () => {
                     }
                 }); // Adjust the URL as necessary
                 if (response.data.result) {
-                    setRowData(response.data.result.map((user: { username: any; attendanceStatus: any; userId: any; }) => ({
+                    setRowData(response.data.result.map((user: { username: any; attendanceStatus: any; userId: any; role:any; }) => ({
                         username: user.username,
                         attendanceStatus: user.attendanceStatus ? 'Yes' : 'No',
-                        userId: user.userId
+                        userId: user.userId,
+                        role: roleMap[Number(user.role)] || 'Unknown'
                     })));
                 }
             } catch (error) {

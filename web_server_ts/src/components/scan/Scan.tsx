@@ -17,7 +17,7 @@ const Scan = () => {
   const userRole = localStorage.getItem("@userrole")
 
   const attendenceApi = async ()=>{
-    const result = axios.post("http://localhost:8989/api/v1/attendence/present",{
+    const result:any = await axios.post("http://localhost:8989/api/v1/attendence/present",{
       username:userName,
       userId:userId,
       lat:lat,
@@ -25,7 +25,12 @@ const Scan = () => {
       role:userRole
     })
     console.log("response====>",result)
+    if(result.status === 200){
+      alert("Attendance sucessfully added")
+    }else if (result.status === 200)
+      alert("Attendance already submited for today")
   }
+  
   
   useEffect(() => {
     const constraints = { video: { facingMode: 'environment' } }; // Use rear camera initially
@@ -73,7 +78,6 @@ const Scan = () => {
       setData(code.data);
       console.log("QR Code Data:", code.data);
       if(code.data==="atendence"){
-
         attendenceApi()
       }else{
         alert("wrong qr")
