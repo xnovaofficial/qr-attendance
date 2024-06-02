@@ -26,7 +26,7 @@ const ViewTable = () => {
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`http://13.250.35.37:8989/api/v1/attendence/get-present`,{
+                const response = await axios.get(`https://qr-attendance-07hu.onrender.com/api/v1/attendence/get-present`,{
                     params:{
                         attendanceStatus:true
                     }
