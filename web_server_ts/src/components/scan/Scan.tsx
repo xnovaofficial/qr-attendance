@@ -17,7 +17,8 @@ const Scan = () => {
   const userRole = localStorage.getItem("@userrole")
 
   const attendenceApi = async ()=>{
-    const result:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/attendence/present",{
+    try {
+      const result:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/attendence/present",{
       username:userName,
       userId:userId,
       lat:lat,
@@ -27,12 +28,19 @@ const Scan = () => {
     console.log("response====>",result)
     if(result.status === 200){
       alert("Attendance sucessfully added")
-    }else if (result.status === 200)
+    }else {
       alert("Attendance already submited for today")
+    }
+    } catch (error) {
+      console.log(error)
+      alert("Attendance already submited for today")
+    }
+    
   }
   
   
   useEffect(() => {
+    
     const constraints = { video: { facingMode: 'environment' } }; // Use rear camera initially
 
 
@@ -114,7 +122,9 @@ const Scan = () => {
   <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
   <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
 </svg>
-      <p>{data}</p>
+      <p style={{color:"white"}}>
+      {data==="atendence"?<p>QR Detected</p>:data}
+      </p>
       </div>
     </div>
   );
