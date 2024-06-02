@@ -17,7 +17,7 @@ const Scan = () => {
   const userRole = localStorage.getItem("@userrole")
 
   const attendenceApi = async ()=>{
-    const result:any = await axios.post("http://localhost:8989/api/v1/attendence/present",{
+    const result:any = await axios.post("http://13.250.35.37:8989/api/v1/attendence/present",{
       username:userName,
       userId:userId,
       lat:lat,

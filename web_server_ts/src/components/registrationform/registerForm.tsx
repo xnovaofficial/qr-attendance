@@ -29,7 +29,7 @@ const RegisterhtmlForm = () => {
           e.preventDefault();
           console.log("form",formValues);
       
-          const response:any = await axios.post("http://localhost:8989/api/v1/auth/register", formValues);
+          const response:any = await axios.post("http://13.250.35.37:8989/api/v1/auth/register", formValues);
       
           console.log("response", response.data);
          

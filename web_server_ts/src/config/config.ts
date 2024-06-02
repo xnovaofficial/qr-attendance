@@ -1,4 +1,4 @@
-export const local_url = "http://localhost:8989";
+export const local_url = "http://13.250.35.37:8989";
 export const local_port = "8989";
 
 export const test_prod_url = "https";
