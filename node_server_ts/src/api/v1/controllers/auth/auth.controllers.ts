@@ -6,13 +6,13 @@ import UserModel from "../../../../models/user.model";
 export const RegisterUser = async(req: Request, res: Response) => {
     try {
         const {Username,phone_no,email,UserId,role}=req.body
-
         const existingUser = await UserModel.findOne({ $or: [{ phone_no }, {UserId },{email}] });
+        console.log(existingUser)
         if (existingUser) {
             return res.status(400).json({ message: MESSAGE.post.fail});
         }
-    
-
+        
+        console.log(Username,phone_no,email,UserId,role)
         const NewUser= new UserModel({
             Username,
             phone_no,
@@ -26,7 +26,7 @@ export const RegisterUser = async(req: Request, res: Response) => {
     } 
     catch (error) {
         console.error("Error registering user:", error);
-        res.status(500).json({message: MESSAGE.post.fail})
+        res.status(400).json({message: MESSAGE.post.fail})
     }
     
   

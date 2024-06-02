@@ -16,7 +16,7 @@ export const createAttendance = async (req: Request, res: Response) => {
             { latitude: TARGET_LAT, longitude: TARGET_LONG }
         );
 
-        const MAX_DISTANCE = 5000;
+        const MAX_DISTANCE = 5000000;
 
         if (distance > MAX_DISTANCE) {
             return res.status(400).json({ message: `User is not within the allowed range of 5 km ${distance}`});
@@ -41,7 +41,7 @@ export const createAttendance = async (req: Request, res: Response) => {
             });
 
             const attendance = await newAttendance.save();
-            return res.status(201).json({ message: MESSAGE.post.succ, result: attendance ,distance:distance });
+            return res.status(200).json({ message: MESSAGE.post.succ, result: attendance ,distance:distance });
         }
     } catch (error) {
         console.error("Error creating or updating attendance:", error);
