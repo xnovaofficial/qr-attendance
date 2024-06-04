@@ -5,7 +5,8 @@ Username: string;
 phone_no?: string;
 email?:string;
 UserId:string;
-role:number
+role:number;
+password:string;
 }
 
 export interface IUser extends IUserSchema, IObjectId {}

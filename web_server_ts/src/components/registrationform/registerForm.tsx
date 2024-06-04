@@ -32,6 +32,12 @@ const RegisterhtmlForm = () => {
           const response:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/auth/register", formValues);
       
           console.log("response", response.data);
+          console.log("response====>",response.status)
+          if(response.status === 200){
+            alert("Your Account has Succesfully Created")
+          }else {
+            alert("You are already logged in")
+          }
          
           localStorage.setItem("@userId",response!.data!.result.UserId)
          localStorage.setItem("@userName",response!.data!.result.Username)
@@ -41,6 +47,7 @@ const RegisterhtmlForm = () => {
          navigate("/scan");
         } catch (error) {
           console.error(error);
+          alert("You are already logged in")
         }
       }
       

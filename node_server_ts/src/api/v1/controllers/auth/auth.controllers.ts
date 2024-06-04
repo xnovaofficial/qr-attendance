@@ -5,7 +5,7 @@ import UserModel from "../../../../models/user.model";
 //registeruser
 export const RegisterUser = async(req: Request, res: Response) => {
     try {
-        const {Username,phone_no,email,UserId,role}=req.body
+        const {Username,phone_no,email,UserId,role,password}=req.body
         const existingUser = await UserModel.findOne({ $or: [{ phone_no }, {UserId },{email}] });
         console.log(existingUser)
         if (existingUser) {
@@ -18,7 +18,8 @@ export const RegisterUser = async(req: Request, res: Response) => {
             phone_no,
             email,
             UserId,
-            role
+            role,
+            password
         })
     
         const user = await NewUser.save();
@@ -32,39 +33,25 @@ export const RegisterUser = async(req: Request, res: Response) => {
   
 };
 
-//loginuser api
 
+
+// SignInUser
 export const SignInUser = async (req: Request, res: Response) => {
-	try {
-        const { phone_no,UserId } = req.body;
-        const user = await UserModel.findOne({phone_no 
-        });
+    try {
+        const { phone_no, password } = req.body;
+        const user = await UserModel.findOne({ phone_no });
 
-        if (user) {
-            if (UserId === user.UserId) {
-                console.log("user found and UserId matches");
-                return res.status(200).json({
-                    message:MESSAGE.post.succ,
-                    result:user
-                });
-            } else {
-                console.log("UserId does not match");
-                return res.status(404).json({
-                    message: MESSAGE.post.fail
-                });
-            }
+        if (!user) {
+            return res.status(400).json({ message: MESSAGE.post.fail });
         }
-       
+
+        if (password !== user.password) {
+            return res.status(400).json({ message: MESSAGE.post.fail });
+        }
+
+        return res.status(200).json({ message: MESSAGE.post.succ, result: user });
     } catch (error) {
-        console.error("Error logging in:", error);
-        res.status(400).json({
-            message: MESSAGE.post.fail
-        });
+        console.error("Error signing in user:", error);
+        res.status(400).json({ message: MESSAGE.post.fail });
     }
 };
-
-
-
-
-
-module.exports={RegisterUser,SignInUser}

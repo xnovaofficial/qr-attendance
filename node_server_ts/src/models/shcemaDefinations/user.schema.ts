@@ -10,7 +10,8 @@ const UserSchema: Schema<IUserSchema> = new Schema<IUserSchema>(
 		phone_no: SCHEMA_DEFINITION_PROPERTY.requiredNumber,
 		email:SCHEMA_DEFINITION_PROPERTY.requiredString,
 		UserId:SCHEMA_DEFINITION_PROPERTY.requiredString,
-		role:SCHEMA_DEFINITION_PROPERTY.optionalNullNumber
+		role:SCHEMA_DEFINITION_PROPERTY.optionalNullNumber,
+		password:SCHEMA_DEFINITION_PROPERTY.requiredString
 	},
 	GENERAL_SCHEMA_OPTIONS
 );

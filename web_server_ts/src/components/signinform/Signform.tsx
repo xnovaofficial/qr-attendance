@@ -23,6 +23,12 @@ import { useNavigate } from "react-router-dom";
         const response:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/auth/signin", formValues);
     
         console.log("response", response.data);
+        console.log("response====>",response.status)
+        if(response.status === 200){
+          alert("You are Succesfully Succesfully loggedin")
+        }else {
+          alert("YOu are already logged in")
+        }
        
 
         localStorage.setItem("@userId",response!.data!.result.UserId)
@@ -31,9 +37,11 @@ import { useNavigate } from "react-router-dom";
         localStorage.setItem("@userPhone",response!.data!.result.phone_no)
         localStorage.setItem("@userrole",response!.data!.result.role)
         navigate("/scan");
+        
    
       } catch (error) {
         console.error(error);
+        alert("YOu are already logged in")
       }
     }
 
