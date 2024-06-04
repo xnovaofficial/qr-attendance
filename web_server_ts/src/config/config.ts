@@ -1,4 +1,4 @@
-export const local_url = "https://qr-attendance-07hu.onrender.com";
+export const local_url = "https://qr-attendance-be.onrender.com";
 export const local_port = "8989";
 
 export const test_prod_url = "https";

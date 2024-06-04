@@ -12,7 +12,8 @@ const RegisterhtmlForm = () => {
         email: '',
         phone_no: '',
         UserId:'',
-        role:1
+        role:1,
+        password:''
       });
 
 
@@ -29,7 +30,7 @@ const RegisterhtmlForm = () => {
           e.preventDefault();
           console.log("form",formValues);
       
-          const response:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/auth/register", formValues);
+          const response:any = await axios.post("https://qr-attendance-be.onrender.com/api/v1/auth/register", formValues);
       
           console.log("response", response.data);
           console.log("response====>",response.status)
@@ -62,7 +63,7 @@ const RegisterhtmlForm = () => {
         <form action="#" style={{height:"100%"}} onSubmit={handleSubmit}>
   <div className="user_details">
     <div className="input_box">
-      <label htmlFor="username">Username</label>
+      <label htmlFor="username">Name</label>
       <input 
         type="text"
         id="username"
@@ -98,13 +99,25 @@ const RegisterhtmlForm = () => {
       />
     </div>
     <div className="input_box">
-      <label htmlFor="id">User ID</label>
+      <label htmlFor="id">employee id</label>
       <input
         type="text"
         id="userid"
         name="UserId"
         placeholder="Enter your userid"
         value={formValues.UserId}
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+    <div className="input_box">
+      <label htmlFor="id">Password</label>
+      <input
+        type="string"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        value={formValues.password}
         onChange={handleInputChange}
         required
       />

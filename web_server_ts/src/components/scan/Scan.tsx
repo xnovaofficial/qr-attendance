@@ -18,7 +18,7 @@ const Scan = () => {
 
   const attendenceApi = async ()=>{
     try {
-      const result:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/attendence/present",{
+      const result:any = await axios.post("https://qr-attendance-be.onrender.com/api/v1/attendence/present",{
       username:userName,
       userId:userId,
       lat:lat,

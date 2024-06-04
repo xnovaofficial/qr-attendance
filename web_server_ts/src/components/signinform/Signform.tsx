@@ -9,8 +9,9 @@ import { useNavigate } from "react-router-dom";
 
     const [formValues, setFormValues] = useState({
       
-          UserId: '',
-          phone_no: ''
+          
+          phone_no: '',
+          password: ''
          
         });
         const navigate = useNavigate();
@@ -20,7 +21,7 @@ import { useNavigate } from "react-router-dom";
         e.preventDefault();
         console.log(formValues);
     
-        const response:any = await axios.post("https://qr-attendance-07hu.onrender.com/api/v1/auth/signin", formValues);
+        const response:any = await axios.post("https://qr-attendance-be.onrender.com/api/v1/auth/signin", formValues);
     
         console.log("response", response.data);
         console.log("response====>",response.status)
@@ -63,18 +64,7 @@ import { useNavigate } from "react-router-dom";
         <form action="#" style={{height:"100%"}} onSubmit={handleSubmit}>
   <div className="user_details">
     
-    <div className="input_box">
-      <label htmlFor="UserId">UserId</label>
-      <input  
-        type="string"
-        id="UserId"
-        name="UserId"
-        placeholder="Enter your UserId"
-        value={formValues.UserId}
-        onChange={handleInputChange}
-        required
-      />
-    </div>
+    
     <div className="input_box">
       <label htmlFor="phone">Phone Number</label>
       <input
@@ -83,6 +73,19 @@ import { useNavigate } from "react-router-dom";
         name="phone_no"
         placeholder="Enter your number"
         value={formValues.phone_no}
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+
+    <div className="input_box">
+      <label htmlFor="UserId">Password</label>
+      <input  
+        type="string"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        value={formValues.password}
         onChange={handleInputChange}
         required
       />

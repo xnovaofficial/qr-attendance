@@ -6,9 +6,9 @@ import axios from 'axios';
 
 const ViewTable = () => {
     const [colDefs]:any = useState([
-        { field: "username" },
-        { field: "attendanceStatus" },
-        { field: "userId" },
+        { field: "username",headerName:"Name" },
+        { field: "attendanceStatus",headerName:"attendance" },
+        { field: "userId",headerName:"employee id" },
         { field: "role" },
     ]);
     const [rowData, setRowData] = useState([]);
@@ -26,7 +26,7 @@ const ViewTable = () => {
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`https://qr-attendance-07hu.onrender.com/api/v1/attendence/get-present`,{
+                const response = await axios.get(`https://qr-attendance-be.onrender.com/api/v1/attendence/get-present`,{
                     params:{
                         attendanceStatus:true
                     }
