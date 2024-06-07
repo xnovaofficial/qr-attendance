@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
     const [formValues, setFormValues] = useState({
       
           
-          phone_no: '',
+          UserId: '',
           password: ''
          
         });
@@ -24,11 +24,11 @@ import { useNavigate } from "react-router-dom";
         const response:any = await axios.post("https://qr-attendance-be.onrender.com/api/v1/auth/signin", formValues);
     
         console.log("response", response.data);
-        console.log("response====>",response.status)
+        // console.log("response====>",response.status)
         if(response.status === 200){
-          alert("You are Succesfully Succesfully loggedin")
+          alert("You are Succesfully  loggedin")
         }else {
-          alert("YOu are already logged in")
+          alert("Your are already logged in")
         }
        
 
@@ -42,7 +42,7 @@ import { useNavigate } from "react-router-dom";
    
       } catch (error) {
         console.error(error);
-        alert("YOu are already logged in")
+        alert("Your password or ID does not match. Please try again")
       }
     }
 
@@ -66,13 +66,13 @@ import { useNavigate } from "react-router-dom";
     
     
     <div className="input_box">
-      <label htmlFor="phone">Phone Number</label>
+      <label htmlFor="UserId">employee id</label>
       <input
-        type="number"
-        id="phone"
-        name="phone_no"
-        placeholder="Enter your number"
-        value={formValues.phone_no}
+        type="string"
+        id="UserId"
+        name="UserId"
+        placeholder="Enter your employee id"
+        value={formValues.UserId}
         onChange={handleInputChange}
         required
       />
