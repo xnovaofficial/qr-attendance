@@ -38,8 +38,8 @@ export const RegisterUser = async(req: Request, res: Response) => {
 // SignInUser
 export const SignInUser = async (req: Request, res: Response) => {
     try {
-        const { phone_no, password } = req.body;
-        const user = await UserModel.findOne({ phone_no });
+        const { UserId, password } = req.body;
+        const user = await UserModel.findOne({ UserId });
 
         if (!user) {
             return res.status(400).json({ message: MESSAGE.post.fail });
